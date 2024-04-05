@@ -16,6 +16,8 @@ import { useDeleteToDoMutation } from '../api/deleteToDo';
 import { useEffect } from 'react';
 import { removeToDo } from '@/entities/todo/lib/toDoListSlice';
 import { ICustomError } from '@/shared/constants/types/error';
+import { useNavigate } from 'react-router-dom';
+import { APP_PATHS } from '@/shared/constants/AppPaths';
 
 interface IDeleteModalProps {
   todo: IToDo;
@@ -24,11 +26,16 @@ interface IDeleteModalProps {
 export const DeleteToDoModal = (props: IDeleteModalProps): JSX.Element => {
   const { todo } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
   const [deleteToDo, { isSuccess, isLoading, error }] = useDeleteToDoMutation();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    isSuccess ? dispatch(removeToDo(todo._id)) : null;
+    if (isSuccess) {
+      dispatch(removeToDo(todo._id));
+      onClose();
+      navigate(APP_PATHS.MAIN);
+    }
   }, [isSuccess]);
 
   const toast = useToast();

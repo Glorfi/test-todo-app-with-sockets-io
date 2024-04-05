@@ -67,6 +67,13 @@ export const CreateToDoModal = (): JSX.Element => {
     if (data) {
       dispatch(addToDo(data));
       onClose();
+      setFormValues({
+        name: '',
+        _id: '',
+        description: '',
+        progress: 30,
+      });
+      setIsFormValid(false);
     }
   }, [data]);
 
