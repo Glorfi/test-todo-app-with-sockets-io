@@ -39,7 +39,7 @@ export const ToDoCard = (props: IToDoCard): JSX.Element => {
           value={toDoData.progress}
           w={'100%'}
           min={0}
-          max={50}
+          max={100}
         />
       </CardFooter>
     </Card>

@@ -33,8 +33,6 @@ export const SocketProvider = ({
     }
 
     function onUpdate(data: ISocketResponse) {
-      console.log(data);
-
       dispatch(updateToDo(data));
     }
 

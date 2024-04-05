@@ -117,7 +117,7 @@ export const CreateToDoModal = (): JSX.Element => {
               colorScheme="teal"
               onChangeEnd={handleSlider}
               min={0}
-              max={50}
+              max={100}
             >
               <SliderTrack>
                 <SliderFilledTrack />

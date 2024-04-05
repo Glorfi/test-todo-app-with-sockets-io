@@ -14,7 +14,7 @@ export const ToDoListWidget = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (data) {
+    if (data && toDoList.length === 0) {
       dispatch(setTodosList(data));
     }
   }, [data]);
