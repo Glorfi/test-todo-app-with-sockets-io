@@ -6,10 +6,8 @@ import { APP_PATHS } from '@/shared/constants/AppPaths';
 export const Header = (): JSX.Element => {
   const path = useLocation().pathname;
 
-  console.log(path);
-
   return (
-    <HStack justifyContent={"flex-end"}>
+    <HStack justifyContent={'flex-end'}>
       {path === APP_PATHS.MAIN ? (
         <CreateToDoModal />
       ) : (
