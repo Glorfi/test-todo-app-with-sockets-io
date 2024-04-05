@@ -22,6 +22,14 @@ export const SocketProvider = ({
 
     function onDisconnect() {
       setIsConnected(false);
+      toast({
+        title: 'No connection with the server',
+        description: 'Please start the server or try to refresh the page',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+        position: 'top-right',
+      });
     }
 
     function onUpdate(data: ISocketResponse) {
@@ -47,19 +55,6 @@ export const SocketProvider = ({
       socket.off('foo', onFooEvent);
     };
   }, []);
-
-  useEffect(() => {
-    if (!isConnected) {
-      toast({
-        title: 'No connection with the server',
-        description: 'Please start the server or try to refresh the page',
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-        position: 'top-right',
-      });
-    }
-  }, [isConnected]);
 
   return <>{children}</>;
 };
